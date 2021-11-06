@@ -1,0 +1,121 @@
+<h1>
+  Director #<%= @director_details.id %> details
+</h1>
+
+<a href="/directors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+&nbsp;|&nbsp;
+
+<a href="/delete_director/<%= @director_details.id %>" class="btn btn-block btn-outline-secondary">
+  Delete director
+  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @director_details.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @director_details.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @director_details.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="<%= @director_details.image %>" >
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@director_details.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@director_details.updated_at) %> ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+
+    <th>
+    </th>
+  </tr>
+  
+  <% @filmography.each do |a_film| %>
+  <tr>
+    <td>
+      <%= a_film.id %>
+    </td>
+
+    <td>
+      <img src="<%= a_film.image %>" style="width:250px;">
+    </td>
+
+    <td>
+      <%= a_film.title %>
+    </td>
+
+    <td>
+      <%= a_film.year %>
+    </td>
+
+    <td>
+      <%= @director_name%>
+    </td>
+
+    <td>
+      <a href="/movies/<%= a_film.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
